@@ -60,9 +60,6 @@ public class CustomHandler extends ChannelInboundHandlerAdapter {
                 }
                 ctx.close();
             }
-//            else if(uri.contains("/html")){
-//                channelRead();
-//            }
         }
     }
 }

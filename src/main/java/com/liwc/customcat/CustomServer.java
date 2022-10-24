@@ -39,7 +39,7 @@ public class CustomServer {
         //加载指定包下所有servlet的类名
         cacheClassName(basePackage);
         //启动Server服务
-        runServer();
+        runServer(CustomServer.class);
     }
 
     /**
@@ -68,7 +68,7 @@ public class CustomServer {
     /**
      * 启动CustomServer
      */
-    private void runServer() throws Exception{
+    private void runServer(Class zclass) throws Exception{
         EventLoopGroup parentGroup=new NioEventLoopGroup();
         EventLoopGroup childGroup=new NioEventLoopGroup();
         try{
@@ -86,7 +86,7 @@ public class CustomServer {
                             //netty默认 http解码器
                             pipeline.addLast(new HttpServerCodec());
                             //自定义解析请求处理器
-                            pipeline.addLast("staticHandler",new StaticHandler());
+                            pipeline.addLast("staticHandler",new StaticHandler(zclass));
                             pipeline.addLast("customHandler",new CustomHandler(nameServletMap,nameClassNameMap));
                         }
                     });
