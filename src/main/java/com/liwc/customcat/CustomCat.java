@@ -16,10 +16,4 @@ public class CustomCat {
         CustomServer server=new CustomServer("com.liwc.webapp");
         server.start();
     }
-
-    public static void main(String[] args) throws Exception {
-        //指定web容器地址
-        CustomServer server=new CustomServer("com.liwc.webapp");
-        server.start();
-    }
 }
